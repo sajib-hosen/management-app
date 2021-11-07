@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Navigation = ({navState, setNavState}) => {
     // const [ navState, setNavState] = useState(true);
-    
+    console.log(navState)
     const handleIsTrue = () => {
         if(navState){
             setNavState(false);
@@ -11,19 +11,21 @@ const Navigation = ({navState, setNavState}) => {
             setNavState(true);
         }
     }
+
     return (
-        <div className="flex flex-col justify-between h-screen">
-            <div className="border-2">
+        <div className="flex flex-col justify-between h-screen bg-gray-700">
+            <div className="">
                 <ul>
-                    <li><Link to="home" >{ navState ? "Home" : <i className="fa fa-home"></i>}</Link></li>
-                    <li><Link to="about" >{ navState ? "About Us" :  <i className='far fa-question-circle' ></i>}</Link></li>
+                    <NavLink to="home" ><li className="truncate p-2 hover:bg-gray-400 text-white">{ navState ? "Home" :  <i className='far fa-question-circle' ></i>}</li></NavLink>
+                    <NavLink to="about" ><li className="truncate p-2 hover:bg-gray-400 text-white">{ navState ? "About Us" :  <i className='far fa-question-circle' ></i>}</li></NavLink>
                 </ul>
             </div>
-            <div className="border-2">
-                 <button onClick={handleIsTrue} className="text-xl"><li>&#8644;</li></button>
+            <div  onClick={handleIsTrue} className="border-2">
+                 <button className="text-xl text-white"><li>&#8644;</li></button>
             </div>
         </div>
     );
 };
 
+// className="truncate p-2 hover:bg-gray-400 text-white"
 export default Navigation;
