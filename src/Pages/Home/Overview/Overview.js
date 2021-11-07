@@ -10,7 +10,7 @@ const Overview = () => {
     }
     const date = new Date()
     return (
-        <div style={bgStyle} className="flex w-full p-4">
+        <div style={bgStyle} className="flex w-full p-1">
             {/* <p>{date.toString()}</p> */}
             <div  className="w-2/4 p-4">
                 <h1 className="text-2xl text-white text-left border-b-2">Overview</h1><br />

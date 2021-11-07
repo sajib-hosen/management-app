@@ -8,7 +8,7 @@ const Home = () => {
         <div>
             <Banner/><br/>
             <div className="container mx-auto px-8" >
-                <h1 className="text-2xl text-left">Overall View</h1>
+                <h1 className="text-2xl text-left">Overview</h1>
                 <Overview/><br/>
                 <h1 className="text-2xl text-left">Sales for the month of (December-21)</h1>
                 <SalesForTheMonth/>

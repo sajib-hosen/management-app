@@ -1,4 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink } from 'react-router-dom';
+import { faHome, faUserCircle, faInfoCircle, faFileMedical, faBook, faPenAlt, faCartArrowDown, faShoppingBag, faStoreAlt, faListUl } from '@fortawesome/free-solid-svg-icons'
 
 const Navigation = ({navState, setNavState}) => {
     // const [ navState, setNavState] = useState(true);
@@ -12,12 +14,31 @@ const Navigation = ({navState, setNavState}) => {
         }
     }
 
+    const iBook = <FontAwesomeIcon icon={faBook} />
+    const iHome = <FontAwesomeIcon icon={faHome} />
+    const iUser = <FontAwesomeIcon icon={faUserCircle} />
+    const iInfo = <FontAwesomeIcon icon={faInfoCircle} />
+    const iCreatFile = <FontAwesomeIcon icon={faFileMedical} />
+    // const iPen = <FontAwesomeIcon icon={faPenAlt} />
+    // const iCart = <FontAwesomeIcon icon={faCartArrowDown} />
+    const iShoppingBag = <FontAwesomeIcon icon={faShoppingBag} />
+    const iList = <FontAwesomeIcon icon={faListUl} />
+    const iShop = <FontAwesomeIcon icon={faStoreAlt} />
+
     return (
         <div className="flex flex-col justify-between h-screen bg-gray-700">
             <div className="">
                 <ul>
-                    <NavLink to="home" ><li className="truncate p-2 hover:bg-gray-400 text-white">{ navState ? "Home" :  <i className='far fa-question-circle' ></i>}</li></NavLink>
-                    <NavLink to="about" ><li className="truncate p-2 hover:bg-gray-400 text-white">{ navState ? "About Us" :  <i className='far fa-question-circle' ></i>}</li></NavLink>
+                    <NavLink to="home" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Home" : iHome}</li></NavLink>
+                    <NavLink to="sale" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Sale" : iShop}</li></NavLink>
+                    {/* <NavLink to="sale" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Sale" : iCart}</li></NavLink> */}
+                    <NavLink to="purchase" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Purchase" : iShoppingBag}</li></NavLink>
+                    <NavLink to="creat-file" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Creat File" : iCreatFile}</li></NavLink>
+                    <NavLink to="list" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "List(s)" : iList}</li></NavLink>
+                    {/* <NavLink to="pen" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Pen" : iPen}</li></NavLink> */}
+                    <NavLink to="accounting" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Accounts" : iBook}</li></NavLink>
+                    <NavLink to="about" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "About Us" : iInfo}</li></NavLink>
+                    <NavLink to="login" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Log In" : iUser}</li></NavLink>
                 </ul>
             </div>
             <div  onClick={handleIsTrue} className="border-2">
@@ -27,5 +48,5 @@ const Navigation = ({navState, setNavState}) => {
     );
 };
 
-// className="truncate p-2 hover:bg-gray-400 text-white"
+// className="truncate p-3 hover:bg-gray-400 text-white"
 export default Navigation;
