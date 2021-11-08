@@ -2,9 +2,10 @@ import React from 'react';
 
 const Overview = () => {
     const bgStyle = {
-        backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://wallpapercave.com/wp/wp2172545.jpg')",
+        backgroundImage: "linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://theculturetrip.com/wp-content/uploads/2016/10/china-rice-terraces.jpg')",
         backgroundRepeat: "no-repeat",
         backgroundAttachment: "fixed",
+        backgroundSize: "cover",
         backgroundPosition: "center",
         // filter: "blur(4px)"
     }
@@ -33,7 +34,7 @@ const Overview = () => {
             </div>
 
             <div className="w-2/4">
-                <img className="p-4" src="https://miro.medium.com/max/700/0*Bj83XdHGcNa81lTR.png" alt="nothway" />
+                <img className="p-4" src="https://www.researchgate.net/profile/Marsha-Katz-2/publication/283347029/figure/fig5/AS:391528112508932@1470358984221/Figure-B-2-Cumulative-growth-rate-of-total-health-care-spending-as-a-percent-of-GDP.png" alt="nothway" />
             </div>
             
         </div>

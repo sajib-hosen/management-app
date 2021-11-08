@@ -1,7 +1,8 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import AboutUs from '../AboutUs/AboutUs';
 import Home from '../Home/Home';
+import Sales from '../Sales/Sales';
 import Navigation from '../Shared/Navigation/Navigation';
 
 const Dashboard = () => {
@@ -37,6 +38,12 @@ const Dashboard = () => {
                         <Route index element={<Home />} />
                         <Route path="home" element={<Home />} />
                         <Route path="about" element={<AboutUs/>} />
+                        <Route path="sales" element={<Sales/>} >
+                            <Route path="invoice" />
+                            <Route path="sales-rec" />
+                            <Route path="rec-payment" />
+                        </Route>
+                        <Outlet/>
                     </Routes>
                 </div>
             </BrowserRouter>

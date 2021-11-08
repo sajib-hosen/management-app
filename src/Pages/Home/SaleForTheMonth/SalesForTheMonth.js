@@ -10,7 +10,7 @@ const SalesForTheMonth = () => {
     return (
         <div className="flex" style={salesStyle}>
             <div className="w-2/4">
-                <img className="p-4" src="https://miro.medium.com/max/700/0*Bj83XdHGcNa81lTR.png" alt="sales report"></img>
+                <img className="p-4" src="https://lh6.ggpht.com/_DHcIJngEEpY/TEDGO-suI0I/AAAAAAAAVIc/lKvyA5PKDwY/s800/Growth%20Rate%20Displays.PNG" alt="sales report"></img>
             </div>
             <div  className="w-2/4 p-4">
                 <h1 className="text-2xl text-white text-left border-b-2">Sales (December-21)</h1><br />
