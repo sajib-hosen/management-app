@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import AboutUs from '../AboutUs/AboutUs';
 import Home from '../Home/Home';
+import Purchase from '../Purchase/Purchase';
 import Sales from '../Sales/Sales';
 import Navigation from '../Shared/Navigation/Navigation';
 
@@ -38,12 +39,20 @@ const Dashboard = () => {
                         <Route index element={<Home />} />
                         <Route path="home" element={<Home />} />
                         <Route path="about" element={<AboutUs/>} />
+
                         <Route path="sales" element={<Sales/>} >
                             <Route path="invoice" />
                             <Route path="sales-rec" />
                             <Route path="rec-payment" />
                         </Route>
-                        <Outlet/>
+
+                        <Route path="purchase" element={<Purchase/>} >
+                            <Route path="creat-po" />
+                            <Route path="local-purchase" />
+                            <Route path="make-payment" />
+                        </Route>
+
+                        {/* <Outlet/> */}
                     </Routes>
                 </div>
             </BrowserRouter>

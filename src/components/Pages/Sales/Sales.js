@@ -6,11 +6,13 @@ const Sales = () => {
     // const match = useRouteMatch();
     return (
         <div>
-            <div className="flex justify-between border-2">
+            <div className="flex justify-between bg-gray-500 text-white">
                 <div>
-                    <NavLink to="invoice">Creat Invoice</NavLink>
-                    <NavLink to="sales-rec">Sales Receipt</NavLink>
-                    <NavLink to="rec-payment">Receive Payment</NavLink>
+                    <ul className="flex">
+                    <NavLink to="invoice" ><li className="truncate py-1 px-2  hover:bg-gray-400 text-white">Creat Invoice</li></NavLink>
+                    <NavLink to="sales-rec"><li className="truncate py-1 px-2 hover:bg-gray-400 text-white">Sales Receipt</li></NavLink>
+                    <NavLink to="rec-payment"><li className="truncate py-1 px-2 hover:bg-gray-400 text-white">Receive Payment</li></NavLink>
+                    </ul>
                 </div>
                 <div>
                     <p>Search</p>

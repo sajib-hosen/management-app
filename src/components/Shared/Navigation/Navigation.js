@@ -29,7 +29,7 @@ const Navigation = ({navState, setNavState}) => {
                     <NavLink to="home" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Home" : iHome}</li></NavLink>
                     <NavLink to="sales" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Sale" : iShop}</li></NavLink>
                     <NavLink to="purchase" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Purchase" : iShoppingBag}</li></NavLink>
-                    <NavLink to="creat-file" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Creat File" : iCreatFile}</li></NavLink>
+                    <NavLink to="create-file" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Creat File" : iCreatFile}</li></NavLink>
                     <NavLink to="list" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "List(s)" : iList}</li></NavLink>
                     <NavLink to="accounts" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Accounts" : iBook}</li></NavLink>
                     <NavLink to="about" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "About Us" : iInfo}</li></NavLink>
