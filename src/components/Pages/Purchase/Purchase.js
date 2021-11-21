@@ -21,7 +21,7 @@ const Purchase = () => {
                     <Route path="create-po" element={<p>creat-po</p>} />
                     <Route path="local-purchase" element={<p>local-purchase</p>} />
                     <Route path="make-payment" element={<p>Pay Bill</p>} />
-                    <Outlet/>
+                    {/* <Outlet/> */}
                 </Routes>
             </div>
         </div>

@@ -8,7 +8,8 @@ import Navigation from '../src/components/Shared/Navigation/Navigation'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import CreatNewFile from './components/Pages/NewFile/CreatNewFile';
 import Login from './components/Pages/Login/Login';
-
+import AuthProvider from './components/context/AuthProvider';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 function App() {
   const [ navState, setNavState] = React.useState(false); 
@@ -34,7 +35,8 @@ function App() {
   }
 
   return (
-    <div  className="flex flex-col-reverse text-center">
+    <AuthProvider>
+        <div  className="flex flex-col-reverse text-center">
             <BrowserRouter>
                 <div style={ navState ? styleTrue : styleFlase } className="border-r-2 h-screen fixed inset-y-0 left-0">
                     <Navigation navState={navState} setNavState={setNavState} />   
@@ -43,8 +45,9 @@ function App() {
                     <Routes>
                         <Route index element={<Home />} />
                         <Route path="home" element={<Home />} />
-                        <Route path="about" element={<AboutUs/>} />
-                        <Route path="sales" element={<Sales />} >
+                        <Route path="about" element={ <PrivateRoute> <AboutUs/> </PrivateRoute> } >
+                        </Route>
+                        <Route path="sales" element={<PrivateRoute> <Sales /> </PrivateRoute> } >
                             <Route path="invoice" />
                             <Route path="sales-rec" />
                             <Route path="rec-payment" />
@@ -58,13 +61,14 @@ function App() {
                             <Route path="new-customer" />
                             <Route path="new-suppliers" />
                             <Route path="new-items" />
+                            <Route path="new-emply" />
                         </Route>
-
                         <Route path='login' element={ <Login/> } />
                     </Routes>
                 </div>
             </BrowserRouter>
         </div>
+    </AuthProvider>
   );
 }
 

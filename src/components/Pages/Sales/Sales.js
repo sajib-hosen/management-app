@@ -1,9 +1,8 @@
 import React from 'react';
 import { NavLink, Routes, Route, Outlet } from 'react-router-dom';
-// import SalesNav from './SalesNav/SalesNav';
 
 const Sales = () => {
-    // const match = useRouteMatch();
+
     return (
         <div>
             <div className="flex justify-between bg-gray-500 text-white">
@@ -23,7 +22,7 @@ const Sales = () => {
                     <Route path="invoice" element={<p>invoice</p>} />
                     <Route path="sales-rec" element={<p>Sales Receipt</p>} />
                     <Route path="rec-payment" element={<p>Receive Payment</p>} />
-                    <Outlet/>
+                    {/* <Outlet/> */}
                 </Routes>
             </div>
         </div>

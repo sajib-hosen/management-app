@@ -23,7 +23,7 @@ const Navigation = ({navState, setNavState}) => {
     const iShop = <FontAwesomeIcon icon={faStoreAlt} />
 
     return (
-        <div className="flex flex-col justify-between h-screen bg-gray-700">
+        <div className="flex flex-col justify-between h-screen bg-gray-800">
             <div className="">
                 <ul>
                     <NavLink to="home" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Home" : iHome}</li></NavLink>
