@@ -12,9 +12,23 @@ const AddCustomers = () => {
     }
 
     const handleAddCustomer = e =>{
-        console.log( customerData )
+        // console.log( customerData )
 
         //send the data to DB ==>>
+        fetch('http://localhost:5000/usatomers', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify( customerData )
+        })
+        .then( res => res.json())
+        .then( data => {
+            if(data.insertedId){
+                alert('Customer added success')
+            
+            }
+        })
 
         e.preventDefault()
     }

@@ -10,6 +10,7 @@ import CreatNewFile from './components/Pages/NewFile/CreatNewFile';
 import Login from './components/Pages/Login/Login';
 import AuthProvider from './components/context/AuthProvider';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import SetEmployees from './components/Pages/SetEmployees/SetEmployees';
 
 function App() {
   const [ navState, setNavState] = React.useState(false); 
@@ -45,24 +46,35 @@ function App() {
                     <Routes>
                         <Route index element={<Home />} />
                         <Route path="home" element={<Home />} />
-                        <Route path="about" element={ <PrivateRoute> <AboutUs/> </PrivateRoute> } >
-                        </Route>
+
+                        <Route path="about" element={ <PrivateRoute> <AboutUs/> </PrivateRoute> } />
+
                         <Route path="sales" element={<PrivateRoute> <Sales /> </PrivateRoute> } >
                             <Route path="invoice" />
                             <Route path="sales-rec" />
                             <Route path="rec-payment" />
                         </Route>
+
                         <Route path="purchase" element={<Purchase/>} >
                             <Route path="create-po" />
                             <Route path="local-purchase" />
                             <Route path="make-payment" />
                         </Route>
+
                         <Route path="create-file" element={<CreatNewFile/>} >
                             <Route path="new-customer" />
                             <Route path="new-suppliers" />
                             <Route path="new-items" />
                             <Route path="new-emply" />
                         </Route>
+
+                        <Route path="emp-settings" element={<SetEmployees/> } >
+                            <Route path="add-employee" />
+                            <Route path="list-of-employess" />
+                            <Route path="log-as-employee" />
+                            <Route path="proprietor" />
+                        </Route>
+
                         <Route path='login' element={ <Login/> } />
                     </Routes>
                 </div>

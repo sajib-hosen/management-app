@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink } from 'react-router-dom';
-import { faHome, faUserCircle, faInfoCircle, faFileMedical, faBook, faShoppingBag, faStoreAlt, faListUl } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faUserCircle, faInfoCircle, faFileMedical, faBook, faShoppingBag, faStoreAlt, faListUl, faUserCog } from '@fortawesome/free-solid-svg-icons'
 
 const Navigation = ({navState, setNavState}) => {
     console.log(navState)
@@ -19,6 +19,7 @@ const Navigation = ({navState, setNavState}) => {
     const iInfo = <FontAwesomeIcon icon={faInfoCircle} />
     const iCreatFile = <FontAwesomeIcon icon={faFileMedical} />
     const iShoppingBag = <FontAwesomeIcon icon={faShoppingBag} />
+    const iCogs = <FontAwesomeIcon icon={faUserCog} />
     const iList = <FontAwesomeIcon icon={faListUl} />
     const iShop = <FontAwesomeIcon icon={faStoreAlt} />
 
@@ -32,6 +33,7 @@ const Navigation = ({navState, setNavState}) => {
                     <NavLink to="create-file" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Creat File" : iCreatFile}</li></NavLink>
                     <NavLink to="list" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "List(s)" : iList}</li></NavLink>
                     <NavLink to="accounts" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Accounts" : iBook}</li></NavLink>
+                    <NavLink to="emp-settings" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Employee Setting" : iCogs}</li></NavLink>
                     <NavLink to="about" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "About Us" : iInfo}</li></NavLink>
                     <NavLink to="login" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Log In" : iUser}</li></NavLink>
                 </ul>

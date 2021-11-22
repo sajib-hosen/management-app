@@ -10,12 +10,14 @@ const useFirebase = () =>{
     const auth = getAuth();
 
     //register user ================================
-    const registerUser = ( email, password) =>{
+    const registerUser = ( email, password, userName) =>{
         setIsLoading(true);
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
+            const newUser = { displayName: userName, email: email }
             setUser(userCredential.user);
-            alert('Registration Success')
+            saveUser( newUser, 'POST' )
+            alert('Registration success')
         })
         .catch((error) => {
             setError(error);
@@ -49,6 +51,7 @@ const useFirebase = () =>{
         const googleProvider = new GoogleAuthProvider();
         signInWithPopup( auth, googleProvider)
         .then((credential ) => {
+            saveUser( credential.user, 'PUT' )
             setUser(credential.user);
                 const destination = location?.state?.from || '/';
                 navigate(destination);
@@ -68,6 +71,23 @@ const useFirebase = () =>{
             setError(error);
           });
     }
+
+    // save user to DB ============================
+    const saveUser = ( user, method ) =>{
+        fetch('http://localhost:5000/users', { 
+            method: method,
+            headers: { 'content-type' : 'application/json'}, 
+            body: JSON.stringify( user )
+        })
+        .then( res => res.json())
+        .then( data => {
+            if(data){
+                alert("User inserted success")
+            }
+        })
+    }
+
+
 
     // Observe User State =========================
     useEffect(() =>{

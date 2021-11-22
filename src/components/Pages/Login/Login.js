@@ -27,7 +27,7 @@ const Login = () => {
         const userEmail = emailRef.current.value;
         const userPass = passRef.current.value;
         console.log(userName, userPass, userEmail)
-        registerUser( userEmail, userPass) 
+        registerUser( userEmail, userPass, userName) 
         if( user.email ){
             nameRef.current.value='';
             emailRef.current.value='';
