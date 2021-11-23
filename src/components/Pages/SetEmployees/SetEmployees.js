@@ -11,8 +11,8 @@ const SetEmployees = () => {
                     <ul className="flex text-right">
                         <NavLink to="add-employee" ><li className="truncate py-1 px-2  hover:bg-gray-400 text-white">Add Employee</li></NavLink>
                         <NavLink to="list-of-employess"><li className="truncate py-1 px-2 hover:bg-gray-400 text-white">Employees List</li></NavLink>
-                        <NavLink to="log-as-employee"><li className="truncate py-1 px-2 hover:bg-gray-400 text-white">Employee Login</li></NavLink>
-                        <NavLink to="proprietor"><li className="truncate py-1 px-2 hover:bg-gray-400 text-white">Add Proprietor</li></NavLink>
+                        <NavLink to="manage-employee"><li className="truncate py-1 px-2 hover:bg-gray-400 text-white">Manage Employees</li></NavLink>
+                        <NavLink to="proprietor"><li className="truncate py-1 px-2 hover:bg-gray-400 text-white">Manage Proprietor</li></NavLink> {/* defaultAdmin Route */}
                     </ul>
                 </div>
             </div>
@@ -21,7 +21,7 @@ const SetEmployees = () => {
                     <Route path="/" element={ <p className='border-2'>welcome</p>} />
                     <Route path="add-employee" element={ <AddEmployee/> } />
                     <Route path="list-of-employess" element={<p className='border-2'>This is list of employees</p>} />
-                    <Route path="log-as-employee" element={<p className='border-2'>Log in as employess</p>} />
+                    <Route path="manage-employee" element={<p className='border-2'>Manage employess</p>} />
                     <Route path="proprietor" element={ <AddProprietor /> } />
                 </Routes>
             </div>

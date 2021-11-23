@@ -20,8 +20,8 @@ const Banner = () => {
     return (
         <div style={bgStyle} className="flex flex-col w-full p-4 text-center">
             <div className='flex justify-end text-white items-center text-right'>
-                <button onClick={ user.email ? logOut : googleSingIn } className=' px-2'> { user.email ? "Log Out" : "Sign In" } </button>
-                <img className="rounded-full" src={user.photoURL} alt={user.displayName} width='40px' />
+                <button data-aos="fade-right" onClick={ user.email ? logOut : googleSingIn } className=' px-2'> { user.email ? "Log Out" : "Sign In" } </button>
+                <p data-aos="fade-up" >{ user.email }</p>
             </div>
            <div className="p-32 text-white text-center mx-auto">
                 <h1 data-aos="fade-up" className=" text-4xl">Build You Business On Cloud</h1>

@@ -68,10 +68,10 @@ function App() {
                             <Route path="new-emply" />
                         </Route>
 
-                        <Route path="emp-settings" element={<SetEmployees/> } >
+                        <Route path="emp-settings" element={<SetEmployees/> } > {/* Admin Route */}
                             <Route path="add-employee" />
                             <Route path="list-of-employess" />
-                            <Route path="log-as-employee" />
+                            <Route path="manage-employee" />
                             <Route path="proprietor" />
                         </Route>
 

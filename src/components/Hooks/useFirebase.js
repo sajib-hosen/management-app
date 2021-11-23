@@ -7,14 +7,15 @@ const useFirebase = () =>{
     const [ user, setUser ] = useState({});
     const [ error, setError ] = useState('');
     const [ isLoading, setIsLoading ] = useState(false);
-    const auth = getAuth();
+    const auth = getAuth(); 
 
     //register user ================================
-    const registerUser = ( email, password, userName) =>{
+    const registerUser = ( email, password, orgName, tagline, userName) =>{
         setIsLoading(true);
+        const accessAblt ={ sales: true, purchase: true, create: true, accounting: true, home: true, manageEmployee: true }
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            const newUser = { displayName: userName, email: email }
+            const newUser = { role: "admin", email, displayName: userName, orgName, tagline, accessAblt }
             setUser(userCredential.user);
             saveUser( newUser, 'POST' )
             alert('Registration success')
@@ -26,6 +27,24 @@ const useFirebase = () =>{
             setIsLoading(false);
         })
     }
+
+
+    //register employee/user ========================
+        const registerEmployee = ( employeeInfo ) =>{
+            setIsLoading(true);
+            const {email, password} = employeeInfo;
+            createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                saveUser( employeeInfo, 'POST' )
+                alert('Employee Registration Success')
+            })
+            .catch((error) => {
+                setError(error);
+            })
+            .finally(()=>{
+                setIsLoading(false);
+            })
+        }
 
     //login user with email and password ===========
     const logInWithEmail = ( email, password, location, navigate ) =>{
@@ -105,6 +124,7 @@ const useFirebase = () =>{
         googleSingIn,
         logOut,
         logInWithEmail,
+        registerEmployee,
         registerUser,
         isLoading,
         user,

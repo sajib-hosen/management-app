@@ -31,9 +31,9 @@ const Navigation = ({navState, setNavState}) => {
                     <NavLink to="sales" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Sale" : iShop}</li></NavLink>
                     <NavLink to="purchase" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Purchase" : iShoppingBag}</li></NavLink>
                     <NavLink to="create-file" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Creat File" : iCreatFile}</li></NavLink>
-                    <NavLink to="list" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "List(s)" : iList}</li></NavLink>
+                    {/* <NavLink to="list" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "List(s)" : iList}</li></NavLink> */}
                     <NavLink to="accounts" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Accounts" : iBook}</li></NavLink>
-                    <NavLink to="emp-settings" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Employee Setting" : iCogs}</li></NavLink>
+                    <NavLink to="emp-settings" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Manage Employee" : iCogs}</li></NavLink>
                     <NavLink to="about" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "About Us" : iInfo}</li></NavLink>
                     <NavLink to="login" ><li className="truncate p-3 hover:bg-gray-400 text-white">{ navState ? "Log In" : iUser}</li></NavLink>
                 </ul>
