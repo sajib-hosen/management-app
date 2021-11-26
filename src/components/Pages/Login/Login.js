@@ -10,7 +10,7 @@ const Login = () => {
         Aos.init({ duration: 2000})
     } ,[])
 
-    const { googleSingIn, logInWithEmail, registerUser, isLoading, error, user } = useAuth()
+    const { googleSingIn, logInWithEmail, registerUser, isLoading, error, user, emplyLogInWithEmail } = useAuth()
 
     const orgRef = useRef();
     const emailRef = useRef();
@@ -79,24 +79,26 @@ const Login = () => {
 
     const employeeLogin = e =>{
         e.preventDefault();
-        alert('has to create function in login pagr and in useFirebase for employee login ')
+        const userEmail = emailRef.current.value;
+        const userPass = passRef.current.value;
+        emplyLogInWithEmail(userEmail, userPass, location, navigate)
     }
 
     return (
         <div className="flex" >
             <div className="border-2 h-screen w-2/5 flex flex-col justify-items-center" >
                 <div className=' my-auto' >
-                    <form onSubmit={ logInType==="propritorLogin" && propritorLogin || logInType==="employeeLogin" && employeeLogin || logInType==="register" && registerNew }className='flex flex-col items-center p-2' >
+                    <form onSubmit={ (logInType==="propritorLogin") && propritorLogin || (logInType==="employeeLogin") && employeeLogin || (logInType==="register") && registerNew }className='flex flex-col items-center p-2' >
                         {
-                            logInType==="register" &&  <input ref={orgRef}  data-aos="fade-up" className='border-b-2 w-full py-2 my-2' type='name' name='name' placeholder='Organization Name' />
+                            (logInType==="register") &&  <input ref={orgRef}  data-aos="fade-up" className='border-b-2 w-full py-2 my-2' type='name' name='name' placeholder='Organization Name' />
                         }
                         {
-                            logInType==="register" &&  <input ref={taglineRef}  data-aos="fade-up" className='border-b-2 w-full py-2 my-2' type='name' name='tagline' placeholder='Tagline' />
+                            (logInType==="register") &&  <input ref={taglineRef}  data-aos="fade-up" className='border-b-2 w-full py-2 my-2' type='name' name='tagline' placeholder='Tagline' />
                         }
                         {
-                            logInType==="register" &&  <input ref={userRef}  data-aos="fade-up" className='border-b-2 w-full py-2 my-2' type='name' name='tagline' placeholder='User Name' />
+                            (logInType==="register") &&  <input ref={userRef}  data-aos="fade-up" className='border-b-2 w-full py-2 my-2' type='name' name='tagline' placeholder='User Name' />
                         }
-                        <input data-aos="fade-up" ref={emailRef} className='border-b-2 w-full py-2 my-2' type={logInType==="employeeLogin" ? "text" : "email"} name='email' placeholder={logInType==="propritorLogin" && "Propritor Email" || logInType==="employeeLogin" && "Employee ID" || logInType==="register" && "Enter Email"} />
+                        <input data-aos="fade-up" ref={emailRef} className='border-b-2 w-full py-2 my-2' type={logInType==="employeeLogin" ? "text" : "email"} name='email' placeholder={ (logInType==="propritorLogin") && "Propritor Email" || (logInType==="employeeLogin") && "Employee Email" || (logInType==="register") && "Enter Email"} />
                         <input data-aos="fade-up" ref={passRef}  className='border-b-2 w-full py-2 my-2' type='password' name='password' placeholder='Your Password' />
                         
                         <div className='flex' data-aos="fade-up" onChange = { handleRadio }>
@@ -112,7 +114,6 @@ const Login = () => {
                                 <label htmlFor ="register">Register</label>
                                 <input id="register" type="radio" name="c1" value="register" />
                             </div>
-                            
                         </div>  
                         <input data-aos="fade-left" className='w-full py-2 my-3 rounded-full' type='submit' value={ logInType==="propritorLogin" && "Propritor Login" || logInType==="employeeLogin" && "Employee Login" || logInType==="register" && "Register Now" } />
                     </form>

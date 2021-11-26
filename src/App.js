@@ -11,6 +11,7 @@ import Login from './components/Pages/Login/Login';
 import AuthProvider from './components/context/AuthProvider';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import SetEmployees from './components/Pages/SetEmployees/SetEmployees';
+import SalesRoute from './components/PrivateRoute/SalesRoute';
 
 function App() {
   const [ navState, setNavState] = React.useState(false); 
@@ -49,7 +50,7 @@ function App() {
 
                         <Route path="about" element={ <PrivateRoute> <AboutUs/> </PrivateRoute> } />
 
-                        <Route path="sales" element={<PrivateRoute> <Sales /> </PrivateRoute> } >
+                        <Route path="sales" element={<SalesRoute> <Sales /> </SalesRoute> } >
                             <Route path="invoice" />
                             <Route path="sales-rec" />
                             <Route path="rec-payment" />
