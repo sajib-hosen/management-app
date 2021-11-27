@@ -3,6 +3,7 @@ import { NavLink, Routes, Route } from 'react-router-dom';
 import AddEmployee from './AddEmployee/AddEmployee';
 import AddProprietor from './AddProprietor/AddProprietor';
 import DefaultAdminRoute from './../../PrivateRoute/DefaultAdminRoute';
+import AddEmpRoute from './../../PrivateRoute/AddEmpRoute';
 
 const SetEmployees = () => {
     return (
@@ -20,7 +21,7 @@ const SetEmployees = () => {
             <div>
                 <Routes>
                     <Route path="/" element={ <p className='border-2'>welcome</p>} />
-                    <Route path="add-employee" element={ <AddEmployee/> } />
+                    <Route path="add-employee" element={<AddEmpRoute> <AddEmployee/> </AddEmpRoute>} />
                     <Route path="list-of-employess" element={<p className='border-2'>This is list of employees</p>} />
                     <Route path="manage-employee" element={<p className='border-2'>Manage employess</p>} />
                     <Route path="proprietor" element={<DefaultAdminRoute> <AddProprietor /> </DefaultAdminRoute>} />

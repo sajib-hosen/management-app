@@ -12,6 +12,9 @@ import AuthProvider from './components/context/AuthProvider';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import SetEmployees from './components/Pages/SetEmployees/SetEmployees';
 import SalesRoute from './components/PrivateRoute/SalesRoute';
+import PurchaseRoute from './components/PrivateRoute/PurchaseRoute';
+import CreateNewRoute from './components/PrivateRoute/CreateNewRoute';
+import ManageEmployeeRoute from './components/PrivateRoute/ManageEmployeeRoute';
 
 function App() {
   const [ navState, setNavState] = React.useState(false); 
@@ -56,20 +59,20 @@ function App() {
                             <Route path="rec-payment" />
                         </Route>
 
-                        <Route path="purchase" element={<Purchase/>} >
+                        <Route path="purchase" element={ <PurchaseRoute> <Purchase/> </PurchaseRoute>} >
                             <Route path="create-po" />
                             <Route path="local-purchase" />
                             <Route path="make-payment" />
                         </Route>
 
-                        <Route path="create-file" element={<CreatNewFile/>} >
+                        <Route path="create-file" element={<CreateNewRoute> <CreatNewFile/> </CreateNewRoute>} >
                             <Route path="new-customer" />
                             <Route path="new-suppliers" />
                             <Route path="new-items" />
                             <Route path="new-emply" />
                         </Route>
 
-                        <Route path="emp-settings" element={<SetEmployees/> } > {/* Admin Route */}
+                        <Route path="emp-settings" element={<ManageEmployeeRoute> <SetEmployees/> </ManageEmployeeRoute> } > {/* Admin Route */}
                             <Route path="add-employee" />
                             <Route path="list-of-employess" />
                             <Route path="manage-employee" />

@@ -15,10 +15,10 @@ const useFirebase = () =>{
     //register user ===========================================================
     const registerUser = ( email, password, orgName, tagline, userName) =>{
         setIsLoading(true);
-        const accessAblt ={ sales: true, purchase: true, create: true, accounting: true, home: true, manageEmployee: true }
+        const accessArea ={ sales: true, purchase: true, create: true, accounting: true, home: true, manageEmployee: true }
         createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
-            const newUser = { role: "admin", email, displayName: userName, orgName, tagline, accessAblt }
+            const newUser = { role: "admin", email, displayName: userName, orgName, tagline, accessArea }
             setUser(userCredential.user);
             saveUser( newUser, 'POST' )
             alert('Registration success')
@@ -74,7 +74,7 @@ const useFirebase = () =>{
         })
     }
 
-    console.log( empData )
+    // console.log( empData )
 
     //login user with email and password(employee) ========================================
     const emplyLogInWithEmail = ( email, password, location, navigate ) =>{
@@ -97,13 +97,17 @@ const useFirebase = () =>{
 
     // get employee data =========================================================
     useEffect(()=>{
-        fetch(`http://localhost:5000/users/${user.email}`, {
+        if(user.email){
+            fetch(`http://localhost:5000/users/${user.email}`, {
             headers:{ 'authorization': `Bearer ${userToken}`}
         })
         .then( res => res.json())
         .then( data => {
-            setEmpData(data);
-            })
+            if(data._id){
+                setEmpData(data);
+            }
+          })
+        }
     },[userToken])
 
 
