@@ -15,7 +15,7 @@ const AddCustomers = () => {
         // console.log( customerData )
 
         //send the data to DB ==>>
-        fetch('http://localhost:5000/usatomers', {
+        fetch('https://ancient-savannah-32309.herokuapp.com/usatomers', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

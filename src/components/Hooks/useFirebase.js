@@ -98,7 +98,7 @@ const useFirebase = () =>{
     // get employee data =========================================================
     useEffect(()=>{
         if(user.email){
-            fetch(`http://localhost:5000/users/${user.email}`, {
+            fetch(`https://ancient-savannah-32309.herokuapp.com/users/${user.email}`, {
             headers:{ 'authorization': `Bearer ${userToken}`}
         })
         .then( res => res.json())
@@ -143,7 +143,7 @@ const useFirebase = () =>{
 
     // save user to DB ========================================================
     const saveUser = ( user, method ) =>{
-        fetch('http://localhost:5000/users', { 
+        fetch('https://ancient-savannah-32309.herokuapp.com/users', { 
             method: method,
             headers: { 'content-type' : 'application/json'}, 
             body: JSON.stringify( user )
