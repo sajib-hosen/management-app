@@ -1,8 +1,11 @@
 import React from 'react';
 import { NavLink, Routes, Route, Outlet } from 'react-router-dom';
+import Invoice from './Invoice/Invoice';
+import useAuth from './../../Hooks/useAuth';
 
 const Sales = () => {
-
+    const {empData} = useAuth();
+    console.log(empData)
     return (
         <div>
             <div className="flex justify-between bg-gray-500 text-white">
@@ -19,7 +22,8 @@ const Sales = () => {
             </div>
             <div>
                 <Routes>
-                    <Route path="invoice" element={<p>invoice</p>} />
+                    <Route path="/" element={<p>a chart</p>} />
+                    <Route path="invoice" element={<Invoice />} />
                     <Route path="sales-rec" element={<p>Sales Receipt</p>} />
                     <Route path="rec-payment" element={<p>Receive Payment</p>} />
                     {/* <Outlet/> */}

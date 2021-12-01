@@ -183,6 +183,7 @@ const useFirebase = () =>{
         emplyLogInWithEmail,
         registerUser,
         isLoading,
+        userToken,
         empData,
         user,
         error

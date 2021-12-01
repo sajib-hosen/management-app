@@ -5,7 +5,7 @@ import useAuth from './../Hooks/useAuth';
 const SalesRoute = ({children, ...rest}) => {
     const { user, isLoading, empData } = useAuth();
     const location = useLocation();
-    console.log( empData )
+    // console.log( empData )
     if (isLoading) { return <p>Loading ...</p> }
     if (user.email && empData.role === 'defaultAdmin' || empData.accessArea?.sales === true) {
         return children;

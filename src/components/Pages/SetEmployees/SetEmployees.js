@@ -4,8 +4,10 @@ import AddEmployee from './AddEmployee/AddEmployee';
 import AddProprietor from './AddProprietor/AddProprietor';
 import DefaultAdminRoute from './../../PrivateRoute/DefaultAdminRoute';
 import AddEmpRoute from './../../PrivateRoute/AddEmpRoute';
+import useAuth from './../../Hooks/useAuth';
 
 const SetEmployees = () => {
+    const { empData } = useAuth();
     return (
         <div>
             <div className="flex justify-end bg-gray-500 text-white">
@@ -14,7 +16,8 @@ const SetEmployees = () => {
                         <NavLink to="add-employee" ><li className="truncate py-1 px-2  hover:bg-gray-400 text-white">Add Employee</li></NavLink>
                         <NavLink to="list-of-employess"><li className="truncate py-1 px-2 hover:bg-gray-400 text-white">Employees List</li></NavLink>
                         <NavLink to="manage-employee"><li className="truncate py-1 px-2 hover:bg-gray-400 text-white">Manage Employees</li></NavLink>
-                        <NavLink to="proprietor"><li className="truncate py-1 px-2 hover:bg-gray-400 text-white">Manage Proprietor</li></NavLink> {/* defaultAdmin Route */}
+                        { empData.role === 'defaultAdmin' && <NavLink to="proprietor"><li className="truncate py-1 px-2 hover:bg-gray-400 text-white">Manage Proprietor</li></NavLink> }
+                        
                     </ul>
                 </div>
             </div>
