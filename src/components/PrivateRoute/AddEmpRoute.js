@@ -5,7 +5,7 @@ import useAuth from './../Hooks/useAuth';
 const AddEmpRoute = ({children, ...rest}) => {
     const { user, isLoading, empData } = useAuth();
     const location = useLocation();
-    console.log( empempData.role === "admin" )
+    console.log(empData.role === "admin" )
     if (isLoading) { return <p>Loading ...</p> }
     if (user.email && empData.role === "admin") {
         return children;
