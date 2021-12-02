@@ -1,26 +1,37 @@
-import React, { useEffect} from 'react';
+import React, { useEffect, useState} from 'react';
 import useAuth from './../../../Hooks/useAuth';
 
 const Invoice = () => {
-    const {empData} = useAuth();
-    const {adminEmail, email, _id, userToken } = empData;
+    const {empData, userToken} = useAuth();
+    const [ orgData, setOrgData ] = useState({});
+    let { adminEmail, email  } = empData;
+    const { orgName, tagline} = orgData;
 
-    const url = `http://localhost:5000/users/${email}/${adminEmail}`
-    console.log(url)
+    if(!adminEmail){
+        adminEmail = email;
+    }
+    const url = `http://localhost:5000/users/${email}/${adminEmail}`;
     useEffect(()=>{
-        fetch(url, { headers:{ 'authorization': `Bearer ${userToken}`}}).then(res => res.json()).then(data => console.log(data))
+        fetch(url, { headers:{ 'authorization': `Bearer ${userToken}`}})
+        .then(res => res.json())
+        .then(data => setOrgData( data ))
     }, [])
-
-    console.log(empData, adminEmail)
 
     return (
         <div>
-            <div className='border-2 w-4/5'>
-                <div>
-                    <h1>{}</h1>
-                    <h1>Invoice</h1>
+            {/* ===================== */}
+            <div className='flex justify-between border-2 w-4/5'>
+                <div className='pl-4'>
+                    <h1 className='text-2xl text-left'>{orgName}</h1>
+                    <p className='text-left'>{tagline}</p>
                 </div>
-                <div></div>
+                <div>
+                    <h1 className='text-4xl pr-4'>Invoice</h1>
+                </div>
+            </div>
+            {/* ==================== */}
+            <div>
+
             </div>
         </div>
     );
