@@ -7,7 +7,7 @@ const AddEmpRoute = ({children, ...rest}) => {
     const location = useLocation();
     console.log(empData.role === "admin" )
     if (isLoading) { return <p>Loading ...</p> }
-    if (user.email && empData.role === "admin") {
+    if (user.email && empData.role === "admin" || empData.role ==="defaultAdmin") {
         return children;
       }
       return <Navigate to="/" state={{ from: location }} />;
