@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import useAuth from './../../../Hooks/useAuth';
 
 const AddCustomers = () => {
-    const [ customerData, setCustomerData ] = useState({});
+    const {orgData} = useAuth();
+    const [ customerData, setCustomerData ] = useState({cusOf: `${orgData.email}`});
 
     const collectCusData = e =>{
         const field = e.target.name;
@@ -12,21 +14,18 @@ const AddCustomers = () => {
     }
 
     const handleAddCustomer = e =>{
-        // console.log( customerData )
+        console.log( customerData )
 
         //send the data to DB ==>>
-        fetch('https://ancient-savannah-32309.herokuapp.com/usatomers', {
+        fetch('http://localhost:5000/customers', {
             method: "POST",
-            headers: {
-                'content-type': 'application/json'
-            },
+            headers: {'content-type': 'application/json'},
             body: JSON.stringify( customerData )
         })
         .then( res => res.json())
         .then( data => {
             if(data.insertedId){
-                alert('Customer added success')
-            
+                alert('Customer added in DB success')
             }
         })
 

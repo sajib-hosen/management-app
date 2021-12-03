@@ -7,7 +7,9 @@ const useFirebase = () =>{
     const [ user, setUser ] = useState({});
     const [ error, setError ] = useState('');
     const [ empData, setEmpData] = useState({});
+    const [ customers, setCustomers] = useState({});
     const [ userToken, setUserToken] = useState('')
+    const [ orgData, setOrgData ] = useState({});
     const [ isLoading, setIsLoading ] = useState(false);
     const auth = getAuth(); 
 
@@ -30,7 +32,6 @@ const useFirebase = () =>{
             setIsLoading(false);
         })
     }
-
 
     //register employee/user ==================================================
         const registerEmployee = ( employeeInfo ) =>{
@@ -74,26 +75,6 @@ const useFirebase = () =>{
         })
     }
 
-    // console.log( empData )
-
-    //login user with email and password(employee) ========================================
-    const emplyLogInWithEmail = ( email, password, location, navigate ) =>{
-        setIsLoading(true);
-        signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            setUser(userCredential.user);
-            alert('Login Success')
-            const direction = location?.state?.from || '/';
-            navigate(direction);
-        })
-        .catch((error) => {
-            setError(error);
-        })
-        .finally(()=>{
-            setIsLoading(false);
-        })
-    }
-
 
     // get employee data =========================================================
     useEffect(()=>{
@@ -110,8 +91,30 @@ const useFirebase = () =>{
         }
     },[userToken])
 
+    //get Admin Data ==================================================
+    let { adminEmail, email  } = empData;
+    if(!adminEmail){
+        adminEmail = email;
+    }
+    const url = `http://localhost:5000/users/${email}/${adminEmail}`;
+    useEffect(()=>{
+        fetch(url, { headers:{ 'authorization': `Bearer ${userToken}`}})
+        .then(res => res.json())
+        .then(data => setOrgData( data ))
+    }, [url])
 
 
+    //get all customers data =====================================================
+    useEffect(() =>{
+        const url = `http://localhost:5000/customers/${adminEmail}/${email}`
+        fetch(url, { 
+            headers:{ 'authorization': `Bearer ${userToken}`}
+        })
+        .then( res => res.json())
+        .then( data => setCustomers(data))
+    },[orgData, url])
+
+    
     //google sign in ===========================================================
     const googleSingIn = ( location, navigate) =>{
         setIsLoading(true);
@@ -131,7 +134,6 @@ const useFirebase = () =>{
         })
     }
 
-
     //logOut ==================================================================
     const logOut =() =>{
         signOut(auth).then(() => {
@@ -139,7 +141,6 @@ const useFirebase = () =>{
             setError(error);
           });
     }
-
 
     // save user to DB ========================================================
     const saveUser = ( user, method ) =>{
@@ -166,25 +167,27 @@ const useFirebase = () =>{
                 .then( idToken => {
                     setUserToken(idToken)
                 })
-
-            } else {
+            }
+            else {
                 setUser({})
             }
           })
           return () => unsubscribed;
     } ,[])
 
-
+    console.log(customers)
+    
     return{
         googleSingIn,
         logOut,
         logInWithEmail,
         registerEmployee,
-        emplyLogInWithEmail,
         registerUser,
         isLoading,
         userToken,
+        customers,
         empData,
+        orgData,
         user,
         error
     }

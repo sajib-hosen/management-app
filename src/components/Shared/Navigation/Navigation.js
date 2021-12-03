@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { NavLink } from 'react-router-dom';
-import { faHome, faUserCircle, faInfoCircle, faFileMedical, faBook, faShoppingBag, faStoreAlt, faListUl, faUserCog } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faUserCircle, faInfoCircle, faFileMedical, faBook, faShoppingBag, faListUl, faUserCog,faStore } from '@fortawesome/free-solid-svg-icons'
 import useAuth from './../../Hooks/useAuth';
 
 const Navigation = ({navState, setNavState}) => {
     const { empData } = useAuth();
-    console.log(navState)
+    // console.log(navState)
     const handleIsTrue = () => {
         if(navState){
             setNavState(false);
@@ -23,9 +23,9 @@ const Navigation = ({navState, setNavState}) => {
     const iShoppingBag = <FontAwesomeIcon icon={faShoppingBag} />
     const iCogs = <FontAwesomeIcon icon={faUserCog} />
     const iList = <FontAwesomeIcon icon={faListUl} />
-    const iShop = <FontAwesomeIcon icon={faStoreAlt} />
+    const iShop = <FontAwesomeIcon icon={faStore} />
 
-    console.log(empData)
+    // console.log(empData)
     return (
         <div className="flex flex-col justify-between h-screen bg-gray-800">
             <div className="">

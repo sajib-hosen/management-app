@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Aos from 'aos';
 import 'aos/dist/aos.css'
 import useFirebase from './../../../Hooks/useFirebase';
+import { NavLink } from 'react-router-dom';
 
 const Banner = () => {
     const { user, logOut, googleSingIn } = useFirebase();
@@ -20,8 +21,7 @@ const Banner = () => {
     return (
         <div style={bgStyle} className="flex flex-col w-full p-4 text-center">
             <div className='flex justify-end text-white items-center text-right'>
-                <button data-aos="fade-right" onClick={ user.email ? logOut : googleSingIn } className=' px-2'> { user.email ? <p data-aos="fade-up" >{ user.email }</p> : "Sign In" } </button>
-                
+                <button data-aos="fade-right" onClick={ user.email && logOut } className=' px-2'> { user.email ? <p data-aos="fade-up" >{ user.email }</p> : <NavLink to="/login" >Login</NavLink> } </button>
             </div>
            <div className="p-32 text-white text-center mx-auto">
                 <h1 data-aos="fade-up" className=" text-4xl">Build You Business On Cloud</h1>

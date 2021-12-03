@@ -51,8 +51,6 @@ function App() {
                         <Route index element={<Home />} />
                         <Route path="home" element={<Home />} />
 
-                        <Route path="about" element={ <PrivateRoute> <AboutUs/> </PrivateRoute> } />
-
                         <Route path="sales" element={<SalesRoute> <Sales /> </SalesRoute> } >
                             <Route path="invoice" />
                             <Route path="sales-rec" />
@@ -78,6 +76,8 @@ function App() {
                             <Route path="manage-employee" />
                             <Route path="proprietor" />
                         </Route>
+
+                        <Route path="about" element={ <PrivateRoute> <AboutUs/> </PrivateRoute> } />
 
                         <Route path='login' element={ <Login/> } />
                     </Routes>

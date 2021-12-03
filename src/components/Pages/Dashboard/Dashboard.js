@@ -52,7 +52,6 @@ const Dashboard = () => {
                             <Route path="make-payment" />
                         </Route>
 
-                        {/* <Outlet/> */}
                     </Routes>
                 </div>
             </BrowserRouter>
