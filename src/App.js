@@ -77,7 +77,7 @@ function App() {
                             <Route path="proprietor" />
                         </Route>
 
-                        <Route path="about" element={ <PrivateRoute> <AboutUs/> </PrivateRoute> } />
+                        <Route path="about" element={ <AboutUs/> } />
 
                         <Route path='login' element={ <Login/> } />
                     </Routes>
