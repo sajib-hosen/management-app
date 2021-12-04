@@ -7,7 +7,7 @@ const useFirebase = () =>{
     const [ user, setUser ] = useState({});
     const [ error, setError ] = useState('');
     const [ empData, setEmpData] = useState({});
-    const [ customers, setCustomers] = useState({});
+    const [ customers, setCustomers] = useState([]);
     const [ userToken, setUserToken] = useState('')
     const [ orgData, setOrgData ] = useState({});
     const [ isLoading, setIsLoading ] = useState(false);
