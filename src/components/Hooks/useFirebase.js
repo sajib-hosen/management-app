@@ -157,6 +157,8 @@ const useFirebase = () =>{
         })
     }
 
+  
+
 
     // Observe User State =======================================================
     useEffect(() =>{

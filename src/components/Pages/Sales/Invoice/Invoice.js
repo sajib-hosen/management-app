@@ -7,13 +7,15 @@ const Invoice = () => {
     const [customerName, setCustomerName] = useState("");
     const [selectedCus, setSelectedCus] = useState([]);
     const [loopCount, setLoopCount] = useState(true)
+    const [display, setDisplay] = useState({0:true, 1:false, 2:false, 3:false, 4:false, 5:false });
+   
+    // const [ newDisplay, setNewDisplay] = useState({});
 
     // console.log(customers)
     const handleChange = (event) => {
         setCustomerName(event.target.value);
         setLoopCount(true);
       }
-
       if(customerName !== '' && loopCount){
          const selectedCustomer = customers.filter(customer => customer.customerName === customerName);
          setSelectedCus(selectedCustomer);
@@ -23,8 +25,27 @@ const Invoice = () => {
         setSelectedCus([]);
         setLoopCount(false);
       }
-      console.log( 'current cust', customerName, 'selected one', selectedCus )
 
+
+    //Max table row ===========================
+     let tableMaxRow = [];
+     for( let i = 0; i <= 5; i++){
+        tableMaxRow.push(i);
+     }
+
+     const showAddRow = e =>{
+        const targatedClass = e.target.className;
+        e.target.className = 'table border-2 bg-indigo-500';
+        const targatedId = e.target.id;
+        console.log(targatedId)
+        display[targatedId] = true;
+        const newDisplayKeys= {...display}
+        newDisplayKeys[targatedId] = true;
+        console.log("newDisplay",newDisplayKeys)
+        setDisplay(newDisplayKeys)
+        e.preventDefault()
+     }
+     console.log( 'from line 48', display[2])
     return (
         <>
             <div className=' w-4/5'>
@@ -61,36 +82,33 @@ const Invoice = () => {
                             </div>
                         </div><br />
 
-                        <div className='border-2'>
-                            <table>
-                                <tr>
-                                    <th>Firstname</th>
-                                    <th>Lastname</th> 
-                                    <th>Age</th>
+                        {/* create a row on clicke=================================== */}
+                        <div className=''>
+                            <table className='w-full'>
+                                <tr className='w-full'>
+                                    <th>Serial</th>
+                                    <th>Item</th>
+                                    <th>Product Description</th> 
+                                    <th>Quantity</th>
+                                    <th>Unit</th>
+                                    <th>Unit Price</th>
+                                    <th>Total Value</th>
                                 </tr>
-                                <tr>
-                                    <td>Jill</td>
-                                    <td>Smith</td>
-                                    <td>50</td>
-                                </tr>
-                                <tr>
-                                    <td>Jill</td>
-                                    <td>Smith</td>
-                                    <td>50</td>
-                                </tr>
-                                <tr>
-                                    <td>Eve</td>
-                                    <td>Jackson</td>
-                                    <td>94</td>
-                                </tr>
-                                <tr>
-                                    <td>John</td>
-                                    <td>Doe</td>
-                                    <td>80</td>
-                                </tr>
+
+                                { tableMaxRow.map(tableRow =>(( <> 
+                                    {display[tableRow] ? <tr className=''>
+                                        <td>{tableRow+1}</td>
+                                        <td><select><option value="">Select Item</option></select> </td>
+                                        <td>T-shart for woman</td>
+                                        <td>1200</td>
+                                        <td>Pcs</td>
+                                        <td>$ 03.00</td>
+                                        <td>$ 3600.00</td>
+                                        </tr> : <button key={tableRow} id={tableRow} onClick={showAddRow} className='table'>{display[tableRow]}Add Row</button> }
+                                </>)))}
+
                             </table>
                         </div>
-
                     </form>
                 </div>
             </div>
