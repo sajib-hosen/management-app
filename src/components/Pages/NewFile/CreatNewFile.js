@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink, Routes, Route, Outlet } from 'react-router-dom';
 import AddCustomers from './AddCustomers/AddCustomers';
+import AddAnItem from './AddItem/AddAnItem';
 
 const CreatNewFile = () => {
     return (
@@ -21,7 +22,7 @@ const CreatNewFile = () => {
                 <Routes>
                     <Route path="new-customer" element={ <AddCustomers /> } />
                     <Route path="new-suppliers" element={<p className='border-2'>new-suppliers</p>} />
-                    <Route path="new-items" element={<p className='border-2'>new-items</p>} />
+                    <Route path="new-items" element={ <AddAnItem /> } />
                     <Route path="new-emply" element={<p className='border-2'>Add a new employess</p>} />
                     <Outlet/>
                 </Routes>
