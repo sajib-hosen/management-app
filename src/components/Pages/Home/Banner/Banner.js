@@ -5,7 +5,7 @@ import useFirebase from './../../../Hooks/useFirebase';
 import { NavLink } from 'react-router-dom';
 
 const Banner = () => {
-    const { user, logOut, googleSingIn } = useFirebase();
+    const { user, logOut, isLoading } = useFirebase();
 
     useEffect(() =>{
         Aos.init({ duration: 2000})
@@ -24,6 +24,7 @@ const Banner = () => {
                 <button data-aos="fade-right" onClick={ user.email && logOut } className=' px-2'> { user.email ? <p data-aos="fade-up" >{ user.email }</p> : <NavLink to="/login" >Login</NavLink> } </button>
             </div>
            <div className="p-32 text-white text-center mx-auto">
+               {isLoading && <p>Loading...</p>}
                 <h1 data-aos="fade-up" className=" text-4xl">Build You Business On Cloud</h1>
                 <p data-aos="fade-up">We will keep your data safe and secure</p>
            </div>

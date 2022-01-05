@@ -78,6 +78,7 @@ const useFirebase = () =>{
 
     // get employee data =========================================================
     useEffect(()=>{
+        setIsLoading(true)
         if(user.email){
             fetch(`https://ancient-savannah-32309.herokuapp.com/users/${user.email}`, {
             headers:{ 'authorization': `Bearer ${userToken}`}
@@ -88,7 +89,11 @@ const useFirebase = () =>{
                 setEmpData(data);
             }
           })
+          .finally(() =>{
+              setIsLoading(false)
+          })
         }
+        
     },[userToken])
 
     //get Admin Data ==================================================
@@ -98,20 +103,28 @@ const useFirebase = () =>{
     }
     const url = `http://localhost:5000/users/${email}/${adminEmail}`;
     useEffect(()=>{
+        setIsLoading(true)
         fetch(url, { headers:{ 'authorization': `Bearer ${userToken}`}})
         .then(res => res.json())
         .then(data => setOrgData( data ))
+        .finally(() =>{
+            setIsLoading(false)
+        })
     }, [url])
 
 
     //get all customers data =====================================================
     useEffect(() =>{
+        setIsLoading(true)
         const url = `http://localhost:5000/customers/${adminEmail}/${email}`
         fetch(url, { 
             headers:{ 'authorization': `Bearer ${userToken}`}
         })
         .then( res => res.json())
         .then( data => setCustomers(data))
+        .finally(() =>{
+            setIsLoading(false)
+        })
     },[orgData, url])
 
     
@@ -144,6 +157,7 @@ const useFirebase = () =>{
 
     // save user to DB ========================================================
     const saveUser = ( user, method ) =>{
+        setIsLoading(true)
         fetch('https://ancient-savannah-32309.herokuapp.com/users', { 
             method: method,
             headers: { 'content-type' : 'application/json'}, 
@@ -154,6 +168,9 @@ const useFirebase = () =>{
             if(data){
                 alert("User inserted success")
             }
+        })
+        .finally(() =>{
+            setIsLoading(false)
         })
     }
 
